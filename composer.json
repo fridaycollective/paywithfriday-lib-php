@@ -1,0 +1,57 @@
+{
+    "name": "fridaycollective/paywithfriday-lib",
+    "description": "PHP Library for PayWithFriday",
+    "license": "Proprietary",
+    "type": "library",
+    "keywords": [
+        "paywithfriday"
+    ],
+    "authors": [
+        {
+            "name": "Friday Collective",
+            "email": "hey@fridaycollective.co.uk",
+            "homepage": "https://paywithfriday.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8"
+    },
+    "require-dev": {
+        "ramsey/devtools": "^1.7"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Fridaycollective\\Paywithfriday\\Lib\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fridaycollective\\Test\\Paywithfriday\\Lib\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "captainhook/plugin-composer": true,
+            "ramsey/devtools": true,
+            "ramsey/composer-repl": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "captainhook": {
+            "force-install": true
+        },
+        "ramsey/conventional-commits": {
+            "configFile": "conventional-commits.json"
+        },
+        "ramsey/devtools": {
+            "command-prefix": "dev"
+        }
+    }
+}
