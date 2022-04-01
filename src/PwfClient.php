@@ -17,33 +17,34 @@ class PwfClient
 {
     private $applicationId;
     private $applicationKey;
-
     private $requestHeaders;
+
+    private $apiBase = 'https://api.paywithfriday.dev/api/pwf';
+    private $apiUrl;
 
     public function __construct(
         string $applicationId,
-        string $applicationKey
+        string $applicationKey,
+        string $version = 'v1'
     )
     {
         $this->applicationId = $applicationId;
         $this->applicationKey = $applicationKey;
+        $this->apiUrl = $this->apiBase . '/' . $version;
 
         $this->requestHeaders = [
-            'paywithfriday-application-id' => $this->applicationKey,
-            'paywithfriday-api-key' => $this->applicationId,
+            'paywithfriday-application-id' => $this->applicationId,
+            'paywithfriday-api-key' => $this->applicationKey,
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ];
     }
 
-    /**
-     * Returns a greeting statement using the provided name
-     */
-    public function createCustomer(array $payload)
+    private function post(string $endpoint, array $payload)
     {
         $client = new \GuzzleHttp\Client();
         $response = $client->post(
-            'https://api.paywithfriday.com/api/pwf/v1/customers',
+            $this->apiUrl . '/' . $endpoint,
             [
                 'headers' => $this->requestHeaders,
                 'json' => $payload,
@@ -51,6 +52,14 @@ class PwfClient
         );
         $body = $response->getBody();
         return json_decode((string) $body);
+    }
+
+    /**
+     * Returns a greeting statement using the provided name
+     */
+    public function createCustomer(array $payload)
+    {
+        return $this->post('customers', $payload);
     }
 
 
