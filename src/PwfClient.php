@@ -10,17 +10,19 @@ declare(strict_types=1);
 
 namespace Fridaycollective\Paywithfriday\Lib;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * An example class to act as a starting point for developing your library
  */
 class PwfClient
 {
-    private $applicationId;
-    private $applicationKey;
-    private $requestHeaders;
+    private string $applicationId;
+    private string $applicationKey;
+    private array $requestHeaders;
 
-    private $apiBase = 'https://api.paywithfriday.dev/api/pwf';
-    private $apiUrl;
+    private string $apiBase = 'https://api.paywithfriday.dev/api/pwf';
+    private string $apiUrl;
 
     public function __construct(
         string $applicationId,
@@ -40,6 +42,9 @@ class PwfClient
         ];
     }
 
+    /**
+     * @throws GuzzleException
+     */
     private function post(string $endpoint, array $payload)
     {
         $client = new \GuzzleHttp\Client();
@@ -56,6 +61,7 @@ class PwfClient
 
     /**
      * Creates a new customer
+     * @throws GuzzleException
      */
     public function createCustomer(array $payload)
     {
@@ -64,6 +70,7 @@ class PwfClient
 
     /**
      * Creates a new subscription
+     * @throws GuzzleException
      */
     public function createSubscription(array $payload)
     {
