@@ -55,7 +55,7 @@ class PwfClient
     }
 
     /**
-     * Returns a greeting statement using the provided name
+     * Creates a new customer
      */
     public function createCustomer(array $payload)
     {
