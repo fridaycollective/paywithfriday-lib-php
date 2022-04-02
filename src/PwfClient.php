@@ -62,5 +62,13 @@ class PwfClient
         return $this->post('customers', $payload);
     }
 
+    /**
+     * Creates a new subscription
+     */
+    public function createSubscription(array $payload)
+    {
+        return $this->post('subscriptions', $payload);
+    }
+
 
 }
