@@ -21,7 +21,7 @@ class PwfClient
     private string $applicationKey;
     private array $requestHeaders;
 
-    private string $apiBase = 'https://api.paywithfriday.dev/api/pwf';
+    private string $apiBase = 'https://api.paywithfriday.com/api/pwf';
     private string $apiUrl;
 
     public function __construct(
