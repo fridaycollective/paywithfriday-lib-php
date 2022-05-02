@@ -1,7 +1,7 @@
 {
     "name": "fridaycollective/paywithfriday-lib",
     "description": "PHP Library for PayWithFriday",
-    "license": "Proprietary",
+    "license": "proprietary",
     "type": "library",
     "keywords": [
         "paywithfriday"
